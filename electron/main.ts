@@ -479,7 +479,9 @@ function testGrab(found: Rect): GrabRegion | null {
   };
 }
 
-/** Snaps a physical-pixel screen rect to the DIPs `setBounds` expects on the display it's on. */
+/** Snaps a physical-pixel screen rect to the DIPs `setBounds` expects on the display it's on.
+ *  `scaleFactor` is the Windows display scale (1 at 100%). The draft anchors themselves stay in
+ *  capture pixels and scale from the 2560x1440 reference in `BRAWL_LAYOUT`. */
 function toDipBounds(rect: Rect) {
   const display = screen.getDisplayMatching({ x: rect.x, y: rect.y, width: rect.width, height: rect.height });
   const scale = display.scaleFactor || 1;

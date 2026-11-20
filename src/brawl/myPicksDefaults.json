@@ -1764,6 +1764,487 @@
         }
       ]
     },
+    "11": {
+      "heroId": 11,
+      "activeId": "495688",
+      "lists": [
+        {
+          "id": "495688",
+          "heroId": 11,
+          "entries": [
+            {
+              "name": "Extra Charge",
+              "itemId": 3776945997,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Headshot Booster",
+              "itemId": 2010028405,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Extra Regen",
+              "itemId": 2829638276,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Healbane",
+              "itemId": 2603935618,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Rapid Recharge",
+              "itemId": 787198704,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Mystic Slow",
+              "itemId": 1102081447,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Healing Booster",
+              "itemId": 2566692615,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Spirit Resilience",
+              "itemId": 2163598980,
+              "tier": "main",
+              "category": "Ранний этап"
+            },
+            {
+              "name": "Torment Pulse",
+              "itemId": 395944548,
+              "tier": "main",
+              "category": "Середина матча"
+            },
+            {
+              "name": "Mystic Vulnerability",
+              "itemId": 2081037738,
+              "tier": "main",
+              "category": "Середина матча"
+            },
+            {
+              "name": "Superior Cooldown",
+              "itemId": 3261353684,
+              "tier": "main",
+              "category": "Середина матча"
+            },
+            {
+              "name": "Greater Expansion",
+              "itemId": 1193964439,
+              "tier": "main",
+              "category": "Середина матча"
+            },
+            {
+              "name": "Scourge",
+              "itemId": 2417568017,
+              "tier": "main",
+              "category": "Середина матча"
+            },
+            {
+              "name": "Duration Extender",
+              "itemId": 2951612397,
+              "tier": "main",
+              "category": "Середина матча",
+              "detail": "imbue target Rejuvenating Aurora"
+            },
+            {
+              "name": "Superior Duration",
+              "itemId": 2717651715,
+              "tier": "main",
+              "category": "Середина матча"
+            },
+            {
+              "name": "Debuff Reducer",
+              "itemId": 1047818222,
+              "tier": "main",
+              "category": "Поздний этап"
+            },
+            {
+              "name": "Unstoppable",
+              "itemId": 3357231760,
+              "tier": "main",
+              "category": "Поздний этап"
+            },
+            {
+              "name": "Refresher",
+              "itemId": 677738769,
+              "tier": "main",
+              "category": "Поздний этап"
+            },
+            {
+              "name": "Transcendent Cooldown",
+              "itemId": 915014646,
+              "tier": "main",
+              "category": "Поздний этап"
+            },
+            {
+              "name": "Warp Stone",
+              "itemId": 3270001687,
+              "tier": "main",
+              "category": "Поздний этап"
+            },
+            {
+              "name": "Escalating Exposure",
+              "itemId": 3005970438,
+              "tier": "main",
+              "category": "Поздний этап"
+            }
+          ],
+          "categories": [
+            {
+              "name": "Ранний этап",
+              "tier": "main",
+              "optional": false,
+              "description": ""
+            },
+            {
+              "name": "Середина матча",
+              "tier": "main",
+              "optional": false,
+              "description": ""
+            },
+            {
+              "name": "Поздний этап",
+              "tier": "main",
+              "optional": false,
+              "description": ""
+            }
+          ],
+          "source": {
+            "buildId": 495688,
+            "version": 1,
+            "name": "Hoot ~ [Deadlock Aura] ~ Dynamo Aura",
+            "heroId": 11,
+            "author": "account 150070196",
+            "authorAccountId": 150070196,
+            "originBuildId": null,
+            "updated": "2026-02-26",
+            "description": "by 2bStron9er ~ Deadlock Aura\n\ntwitch.tv/2bStron9er\ntwitch.tv/hootdl\n\nСоздано в матче № 61680034.",
+            "note": "",
+            "credit": "",
+            "matchCopy": false
+          }
+        }
+      ]
+    },
+    "12": {
+      "heroId": 12,
+      "activeId": "632883",
+      "lists": [
+        {
+          "id": "632883",
+          "heroId": 12,
+          "entries": [
+            {
+              "name": "Extra Charge",
+              "itemId": 3776945997,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Extra Regen",
+              "itemId": 2829638276,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Extra Spirit",
+              "itemId": 968099481,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Trophy Collector",
+              "itemId": 3074274290,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Extra Stamina",
+              "itemId": 4139877411,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Arcane Surge",
+              "itemId": 1150006784,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Healbane",
+              "itemId": 2603935618,
+              "tier": "main",
+              "category": "Laning Phase."
+            },
+            {
+              "name": "Rusted Barrel",
+              "itemId": 2922054143,
+              "tier": "secondary",
+              "category": "Laning"
+            },
+            {
+              "name": "Enchanter's Emblem",
+              "itemId": 3970837787,
+              "tier": "secondary",
+              "category": "Laning"
+            },
+            {
+              "name": "Suppressor",
+              "itemId": 1925087134,
+              "tier": "secondary",
+              "category": "Laning"
+            },
+            {
+              "name": "Torment Pulse",
+              "itemId": 395944548,
+              "tier": "secondary",
+              "category": "Laning"
+            },
+            {
+              "name": "Fortitude",
+              "itemId": 3585132399,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Mystic Vulnerability",
+              "itemId": 2081037738,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Duration Extender",
+              "itemId": 2951612397,
+              "tier": "main",
+              "category": "Mid Game.",
+              "detail": "imbue target Arctic Beam"
+            },
+            {
+              "name": "Escalating Exposure",
+              "itemId": 3005970438,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Compress Cooldown",
+              "itemId": 380806748,
+              "tier": "main",
+              "category": "Mid Game.",
+              "detail": "imbue target Ice Path"
+            },
+            {
+              "name": "Rapid Recharge",
+              "itemId": 787198704,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Boundless Spirit",
+              "itemId": 2519598785,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Superior Cooldown",
+              "itemId": 3261353684,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Greater Expansion",
+              "itemId": 1193964439,
+              "tier": "main",
+              "category": "Mid Game."
+            },
+            {
+              "name": "Disarming Hex",
+              "itemId": 2061878743,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Knockdown",
+              "itemId": 1254091416,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Tankbuster",
+              "itemId": 2121044373,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Spirit Lifesteal",
+              "itemId": 876563814,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Healing Booster",
+              "itemId": 2566692615,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Metal Skin",
+              "itemId": 1378931225,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Spirit Resilience",
+              "itemId": 2163598980,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Dispel Magic",
+              "itemId": 3731635960,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Bullet Resilience",
+              "itemId": 3140772621,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Counterspell",
+              "itemId": 1414025773,
+              "tier": "secondary",
+              "category": "Mid Game. Read Descriptions"
+            },
+            {
+              "name": "Superior Duration",
+              "itemId": 2717651715,
+              "tier": "main",
+              "category": "Late Game."
+            },
+            {
+              "name": "Spirit Burn",
+              "itemId": 343572757,
+              "tier": "main",
+              "category": "Late Game."
+            },
+            {
+              "name": "Mystic Reverb",
+              "itemId": 3577481646,
+              "tier": "main",
+              "category": "Late Game.",
+              "detail": "imbue target Frost Grenade"
+            },
+            {
+              "name": "Infuser",
+              "itemId": 1797283378,
+              "tier": "main",
+              "category": "Late Game."
+            },
+            {
+              "name": "Transcendent Cooldown",
+              "itemId": 915014646,
+              "tier": "main",
+              "category": "Late Game."
+            },
+            {
+              "name": "Cursed Relic",
+              "itemId": 2617435668,
+              "tier": "secondary",
+              "category": "Late Game Optionals. Read Description."
+            },
+            {
+              "name": "Indomitable",
+              "itemId": 951866250,
+              "tier": "secondary",
+              "category": "Late Game Optionals. Read Description."
+            },
+            {
+              "name": "Healing Tempo",
+              "itemId": 1427630806,
+              "tier": "secondary",
+              "category": "Late Game Optionals. Read Description."
+            },
+            {
+              "name": "Cheat Death",
+              "itemId": 3361811174,
+              "tier": "secondary",
+              "category": "Late Game Optionals. Read Description."
+            },
+            {
+              "name": "Echo Shard",
+              "itemId": 630839635,
+              "tier": "secondary",
+              "category": "Late Game Optionals. Read Description.",
+              "detail": "imbue target Ice Path"
+            }
+          ],
+          "categories": [
+            {
+              "name": "Laning Phase.",
+              "tier": "main",
+              "optional": false,
+              "description": "L-R. After you get Arcane Surge remember to Dash-Jump every single time before using your Arctic Beam. You will get more duration, range and damage."
+            },
+            {
+              "name": "Laning",
+              "tier": "secondary",
+              "optional": true,
+              "description": "Rusted really good against heavy gun heroes."
+            },
+            {
+              "name": "Mid Game.",
+              "tier": "main",
+              "optional": false,
+              "description": "L-R. Rush to Spirit Lifesteal and get your 4.8k Green Spike. ALWAYS BUY YOUR GREENS KIDS!"
+            },
+            {
+              "name": "Mid Game. Read Descriptions",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "Late Game.",
+              "tier": "main",
+              "optional": false,
+              "description": "This is when you start snowballing beyond reach."
+            },
+            {
+              "name": "Late Game Optionals. Read Description.",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            }
+          ],
+          "source": {
+            "buildId": 632883,
+            "version": 341,
+            "name": "Beam 'em Down! [by Lockbuilds]",
+            "heroId": 12,
+            "author": "account 489411562",
+            "authorAccountId": 489411562,
+            "originBuildId": null,
+            "updated": "2026-11-20",
+            "description": "Kelvin's Ice Beam is broken right now. This build empowers it even further. More Kelvin Builds on Lockbuilds.com.\n\nLockbuilds is currently the best destination for Deadlock Builds. It owns the Top Daily spot for a total of 16 Heroes.",
+            "note": "",
+            "credit": "",
+            "matchCopy": false
+          }
+        }
+      ]
+    },
     "13": {
       "heroId": 13,
       "activeId": "514170",
@@ -2872,6 +3353,251 @@
             "originBuildId": null,
             "updated": "2026-07-28",
             "description": "reyache build",
+            "note": "",
+            "credit": "",
+            "matchCopy": false
+          }
+        }
+      ]
+    },
+    "18": {
+      "heroId": 18,
+      "activeId": "805628",
+      "lists": [
+        {
+          "id": "805628",
+          "heroId": 18,
+          "entries": [
+            {
+              "name": "Mystic Burst",
+              "itemId": 1998374645,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Quicksilver Reload",
+              "itemId": 84321454,
+              "tier": "main",
+              "category": "L - R",
+              "detail": "imbue target Scorn"
+            },
+            {
+              "name": "Cold Front",
+              "itemId": 1976391348,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Extra Spirit",
+              "itemId": 968099481,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Torment Pulse",
+              "itemId": 395944548,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Enduring Speed",
+              "itemId": 2447176615,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Healbane",
+              "itemId": 2603935618,
+              "tier": "secondary",
+              "category": "Options over Locket"
+            },
+            {
+              "name": "Trophy Collector",
+              "itemId": 3074274290,
+              "tier": "secondary",
+              "category": "Options over Locket"
+            },
+            {
+              "name": "Slowing Hex",
+              "itemId": 1813726886,
+              "tier": "secondary",
+              "category": "Options over Locket"
+            },
+            {
+              "name": "Veil Walker",
+              "itemId": 865958998,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Tankbuster",
+              "itemId": 2121044373,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Improved Spirit",
+              "itemId": 7409189,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Scourge",
+              "itemId": 2417568017,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Mystic Vulnerability",
+              "itemId": 2081037738,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Escalating Exposure",
+              "itemId": 3005970438,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Spirit Burn",
+              "itemId": 343572757,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Superior Duration",
+              "itemId": 2717651715,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Warp Stone",
+              "itemId": 3270001687,
+              "tier": "secondary",
+              "category": "Phantom Strike prefer"
+            },
+            {
+              "name": "Phantom Strike",
+              "itemId": 1371725689,
+              "tier": "secondary",
+              "category": "Phantom Strike prefer"
+            },
+            {
+              "name": "Dispel Magic",
+              "itemId": 3731635960,
+              "tier": "secondary",
+              "category": "Phantom Strike prefer"
+            },
+            {
+              "name": "Transcendent Cooldown",
+              "itemId": 915014646,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Witchmail",
+              "itemId": 3028234315,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Spirit Resilience",
+              "itemId": 2163598980,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Arctic Blast",
+              "itemId": 3812615317,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Cursed Relic",
+              "itemId": 2617435668,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Juggernaut",
+              "itemId": 1250307611,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Colossus",
+              "itemId": 2407781327,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Unstoppable",
+              "itemId": 3357231760,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Plated Armor",
+              "itemId": 3491236900,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Greater Expansion",
+              "itemId": 1193964439,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            },
+            {
+              "name": "Bullet Resilience",
+              "itemId": 3140772621,
+              "tier": "secondary",
+              "category": "Witchmail good, Arctic Blast for indom proc"
+            }
+          ],
+          "categories": [
+            {
+              "name": "L - R",
+              "tier": "main",
+              "optional": false,
+              "description": ""
+            },
+            {
+              "name": "Options over Locket",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "L - R",
+              "tier": "main",
+              "optional": false,
+              "description": "Full Damage, but you can buy greens from the right&below after Scourge"
+            },
+            {
+              "name": "Phantom Strike prefer",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "Witchmail good, Arctic Blast for indom proc",
+              "tier": "secondary",
+              "optional": true,
+              "description": "Unstoppable if stuns break ur ulty. Plated vs Haze, Infernus, Minam"
+            }
+          ],
+          "source": {
+            "buildId": 805628,
+            "version": 7,
+            "name": "2bStron9er ~ DPS CORE MO&KRILL ~[PRO]~ [ENG] [RU]",
+            "heroId": 18,
+            "author": "account 150070196",
+            "authorAccountId": 150070196,
+            "originBuildId": null,
+            "updated": "2026-11-02",
+            "description": "by 2bStron9er ~ Deadlock Aura YT\r\ntwitch.tv/2bStron9er\r\nt.me/godblessed66 - РУ описание и фишки #Mo&Krill\n\n[ENG] Mo&Krill power is to trade and heal. Use 1st to hero+several creeps or 2heroes. If you damage enemy + heal up the damage you get for this = you won trade. Burst + QSR boosts dmg and heal from 1st. When dig-in, you can use 1st to safely heal. Scorn could be used through walls.to steal camps or on/under bridges/ top midboss if u're too low. Setup kills when ulty is up, active-farm otherwise.",
             "note": "",
             "credit": "",
             "matchCopy": false
@@ -4093,6 +4819,323 @@
             "description": "BEST BUILD",
             "note": "",
             "credit": "based on build 292369",
+            "matchCopy": false
+          }
+        }
+      ]
+    },
+    "35": {
+      "heroId": 35,
+      "activeId": "793000",
+      "lists": [
+        {
+          "id": "793000",
+          "heroId": 35,
+          "entries": [
+            {
+              "name": "Mystic Burst",
+              "itemId": 1998374645,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Mystic Shot",
+              "itemId": 395867183,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "High-Velocity Rounds",
+              "itemId": 3077079169,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Express Shot",
+              "itemId": 690458959,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Sprint Boots",
+              "itemId": 3399065363,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Restorative Shot",
+              "itemId": 3862866912,
+              "tier": "secondary",
+              "category": "Lane Heal"
+            },
+            {
+              "name": "Extra Regen",
+              "itemId": 2829638276,
+              "tier": "secondary",
+              "category": "Lane Heal"
+            },
+            {
+              "name": "Trophy Collector",
+              "itemId": 3074274290,
+              "tier": "secondary",
+              "category": "Alternative Green 4.8k"
+            },
+            {
+              "name": "Healbane",
+              "itemId": 2603935618,
+              "tier": "secondary",
+              "category": "Alternative Green 4.8k"
+            },
+            {
+              "name": "Veil Walker",
+              "itemId": 865958998,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Enchanter's Emblem",
+              "itemId": 3970837787,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Extra Spirit",
+              "itemId": 968099481,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Tankbuster",
+              "itemId": 2121044373,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Improved Spirit",
+              "itemId": 7409189,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Mystic Expansion",
+              "itemId": 754480263,
+              "tier": "main",
+              "category": "L - R"
+            },
+            {
+              "name": "Slowing Hex",
+              "itemId": 1813726886,
+              "tier": "secondary",
+              "category": "Support Items | Rescue Beam - musthave mb"
+            },
+            {
+              "name": "Rescue Beam",
+              "itemId": 1804594021,
+              "tier": "secondary",
+              "category": "Support Items | Rescue Beam - musthave mb"
+            },
+            {
+              "name": "Healing Booster",
+              "itemId": 2566692615,
+              "tier": "secondary",
+              "category": "Support Items | Rescue Beam - musthave mb"
+            },
+            {
+              "name": "Decay",
+              "itemId": 3144988365,
+              "tier": "secondary",
+              "category": "Support Items | Rescue Beam - musthave mb"
+            },
+            {
+              "name": "Mystic Reverb",
+              "itemId": 3577481646,
+              "tier": "main",
+              "category": "He just sneezed my HP bar...",
+              "detail": "imbue target Splatter"
+            },
+            {
+              "name": "Spirit Strike",
+              "itemId": 465043967,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Superior Cooldown",
+              "itemId": 3261353684,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Spirit Snatch",
+              "itemId": 3190916303,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Boundless Spirit",
+              "itemId": 2519598785,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Greater Expansion",
+              "itemId": 1193964439,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Rapid Recharge",
+              "itemId": 787198704,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Crushing Fists",
+              "itemId": 800008313,
+              "tier": "main",
+              "category": "He just sneezed my HP bar..."
+            },
+            {
+              "name": "Spirit Burn",
+              "itemId": 343572757,
+              "tier": "secondary",
+              "category": "Make your choise... Or not"
+            },
+            {
+              "name": "Metal Skin",
+              "itemId": 1378931225,
+              "tier": "secondary",
+              "category": "Make your choise... Or not"
+            },
+            {
+              "name": "Counterspell",
+              "itemId": 1414025773,
+              "tier": "secondary",
+              "category": "Make your choise... Or not"
+            },
+            {
+              "name": "Scourge",
+              "itemId": 2417568017,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Divine Barrier",
+              "itemId": 1662311306,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Cursed Relic",
+              "itemId": 2617435668,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Indomitable",
+              "itemId": 951866250,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Transcendent Cooldown",
+              "itemId": 915014646,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Phantom Strike",
+              "itemId": 1371725689,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Witchmail",
+              "itemId": 3028234315,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Cheat Death",
+              "itemId": 3361811174,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Vortex Web",
+              "itemId": 1152158042,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            },
+            {
+              "name": "Spirit Resilience",
+              "itemId": 2163598980,
+              "tier": "secondary",
+              "category": "What the GOO is this?"
+            }
+          ],
+          "categories": [
+            {
+              "name": "L - R",
+              "tier": "main",
+              "optional": false,
+              "description": ""
+            },
+            {
+              "name": "Lane Heal",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "Alternative Green 4.8k",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "L - R",
+              "tier": "main",
+              "optional": false,
+              "description": ""
+            },
+            {
+              "name": "Support Items | Rescue Beam - musthave mb",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "He just sneezed my HP bar...",
+              "tier": "main",
+              "optional": false,
+              "description": "Buy Spirit Burn first if Enemies got heal"
+            },
+            {
+              "name": "Make your choise... Or not",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            },
+            {
+              "name": "What the GOO is this?",
+              "tier": "secondary",
+              "optional": true,
+              "description": ""
+            }
+          ],
+          "source": {
+            "buildId": 793000,
+            "version": 9,
+            "name": "2bStron9er ~[PRO]~ BIG BURST VISCOUS ~ [ENG] [RU]",
+            "heroId": 35,
+            "author": "account 150070196",
+            "authorAccountId": 150070196,
+            "originBuildId": null,
+            "updated": "2026-09-17",
+            "description": "by 2bStron9er ~ Deadlock Aura YT\r\ntwitch.tv/2bStron9er\r\nt.me/godblessed66   ~  РУ описание #Viscous\n\n ~   Inspired by PRO Overseas \nPunch = ceo of movement (punch-jump-dash).\nSpam 1st on lane,use alternative to hit'n'hide.\nLook for burst procast, we're weak early,  trying trade HP and break position. Use 1st so it hits wall behind enemy. SlowingH -good, RescueB aswell, but u can play FULL DMG. In later fights we stay behind, use spells, save team w/CUBE. Ulty helps us to push walkers, play agro and get out.",
+            "note": "",
+            "credit": "",
             "matchCopy": false
           }
         }

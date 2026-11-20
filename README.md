@@ -16,7 +16,7 @@ Requires Windows. Get the app from the [latest release](https://github.com/Gidnt
 
 IMPORTANT: the files aren't code-signed, so Windows SmartScreen will warn you. Click More info, then Run anyway.
 
-Press F8 to read the draft right away if the app hasn't picked it up. With no game running, pick First-run check in the tray menu and press Show me to try the overlay on a real draft screenshot. The debug panel (Ctrl+Shift+D) is in development and release-candidate builds only.
+Press F8 to read the draft right away if the app hasn't picked it up. With no game running, pick First-run check in the tray menu and press Show me to try the overlay on a real draft screenshot. The app finds a window titled exactly Deadlock on its own. There is no separate debug screen-watcher. The debug panel (Ctrl+Shift+D) is in development and release-candidate builds only.
 
 To work on it (needs [Node.js](https://nodejs.org) 20 or newer):
 
@@ -46,9 +46,11 @@ npm run check                              # Lint, typecheck, formatting and tes
 
 Open the My Picks tab to turn the highlights on or off, add and remove items, and move them between Main and Secondary. Each hero has its own list. While the app has read your hero, it uses that hero's list. When it has not, it uses the hero selected on the tab, which starts as Violet.
 
-Violet starts on Scarlet 9X v2 (build 998571). oses's Violet build (897240 v19) is saved beside it, and the other heroes start on one oses build each. You can import any public build by its id and version. That download runs only when you press Import, from api.deadlock-api.com, and the lists still work with no network. Optional categories land in Secondary and the rest in Main, except the bundled Scarlet list, which uses its own category map. Nothing is sent to the game.
+Violet starts on Scarlet 9X v2 (build 998571, updated 2026-11-17 18:42 UTC). oses's Violet build (897240 v19) is saved beside it, and the other oses heroes start on one oses build each. Mo & Krill, Viscous, Dynamo and Kelvin had no oses row, so their bundled lists are the 2bStron9er and Lockbuilds builds in `src/brawl/defaultBuilds.ts`. The hero selector on the tab starts at Violet. You can import any public build by its id and version. That download runs only when you press Import, from api.deadlock-api.com, and the lists still work with no network. Optional categories land in Secondary and the rest in Main, except the bundled Scarlet list, which uses its own category map. Nothing is sent to the game.
 
-Regenerate the bundled lists with `node scripts/import-default-builds.mjs`.
+The recogniser's layout reference is 2560x1440, and other 16:9 sizes scale from it. A check at 2560x1440 with Windows display scaling at 100% did not need a retune. 1920x1080 is the size of the test-mode dummy window, not a second layout.
+
+Regenerate the bundled lists with `node scripts/import-default-builds.mjs`. The build table, flags, and what is still untested are in [docs/SESSION-2026-11-20.md](docs/SESSION-2026-11-20.md).
 
 ## Documentation 📚
 

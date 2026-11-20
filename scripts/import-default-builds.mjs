@@ -22,9 +22,9 @@ if (!process.execArgv.includes('--experimental-strip-types')) {
 
 const { catalogFromItems, fetchAssetNames, fetchBuild, parseBuildPayload, SCARLET_CATEGORY_TIERS } =
   await import('../src/brawl/buildImport.ts');
-const { OSES_BUILDS, SCARLET_SPEC, VIOLET_ID } = await import('../src/brawl/defaultBuilds.ts');
+const { EXTRA_BUILDS, OSES_BUILDS, SCARLET_SPEC, VIOLET_ID } = await import('../src/brawl/defaultBuilds.ts');
 
-const specs = [SCARLET_SPEC, ...OSES_BUILDS];
+const specs = [SCARLET_SPEC, ...OSES_BUILDS, ...EXTRA_BUILDS];
 
 async function pool(items, limit, fn) {
   const out = new Array(items.length);
@@ -81,9 +81,17 @@ for (const row of fetched) {
 
 const osesIds = new Set(OSES_BUILDS.map((s) => s.buildId));
 const importedOses = OSES_BUILDS.filter((s) => (byHero.get(s.heroId) ?? []).some((l) => l.id === String(s.buildId)));
+const importedExtra = EXTRA_BUILDS.filter((s) => (byHero.get(s.heroId) ?? []).some((l) => l.id === String(s.buildId)));
 
-if (failures.length || importedOses.length !== OSES_BUILDS.length || !byHero.has(VIOLET_ID)) {
-  console.error(`imported ${importedOses.length}/${OSES_BUILDS.length} oses builds`);
+if (
+  failures.length ||
+  importedOses.length !== OSES_BUILDS.length ||
+  importedExtra.length !== EXTRA_BUILDS.length ||
+  !byHero.has(VIOLET_ID)
+) {
+  console.error(
+    `imported ${importedOses.length}/${OSES_BUILDS.length} oses builds, ${importedExtra.length}/${EXTRA_BUILDS.length} extra builds`,
+  );
   for (const f of failures) console.error(`FAIL ${f.hero} ${f.buildId} v${f.version}: ${f.reason}`);
   process.exit(1);
 }
@@ -105,7 +113,7 @@ const file = { generator: 'scripts/import-default-builds.mjs', heroes };
 writeFileSync(join(root, 'src/brawl/myPicksDefaults.json'), `${JSON.stringify(file, null, 2)}\n`);
 
 console.log(
-  `imported ${importedOses.length}/${OSES_BUILDS.length} oses builds, plus Scarlet ${SCARLET_SPEC.buildId} v${SCARLET_SPEC.version}`,
+  `imported ${importedOses.length}/${OSES_BUILDS.length} oses builds, ${importedExtra.length}/${EXTRA_BUILDS.length} extra builds, plus Scarlet ${SCARLET_SPEC.buildId} v${SCARLET_SPEC.version}`,
 );
 const unknownAll = [];
 for (const spec of OSES_BUILDS) {
@@ -116,6 +124,17 @@ for (const spec of OSES_BUILDS) {
   const flag = listFor.source.matchCopy ? ' match-copy' : '';
   console.log(
     `${spec.hero} (${spec.heroId}) build ${spec.buildId} v${spec.version} main ${main} secondary ${secondary} unknown ${unknown.length}${flag} updated ${listFor.source.updated}`,
+  );
+  for (const entry of unknown) unknownAll.push(`${spec.hero}: ${entry.name} [${entry.category}]`);
+}
+for (const spec of EXTRA_BUILDS) {
+  const picks = heroes[String(spec.heroId)];
+  const listFor = picks.lists.find((l) => l.id === String(spec.buildId));
+  const main = listFor.entries.filter((e) => e.tier === 'main').length;
+  const secondary = listFor.entries.filter((e) => e.tier === 'secondary').length;
+  const unknown = listFor.entries.filter((e) => e.itemId == null);
+  console.log(
+    `extra ${spec.hero} (${spec.heroId}) build ${spec.buildId} v${spec.version} active ${picks.activeId} main ${main} secondary ${secondary} unknown ${unknown.length} author ${listFor.source.author} updated ${listFor.source.updated} name ${JSON.stringify(listFor.source.name)}`,
   );
   for (const entry of unknown) unknownAll.push(`${spec.hero}: ${entry.name} [${entry.category}]`);
 }

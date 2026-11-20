@@ -9,7 +9,7 @@ import {
   tierForCard,
   tierForCategory,
 } from '../buildImport';
-import { MATCH_COPY_BUILD_IDS, OSES_ACCOUNT_ID, OSES_BUILDS, VIOLET_ID } from '../defaultBuilds';
+import { EXTRA_BUILDS, MATCH_COPY_BUILD_IDS, OSES_ACCOUNT_ID, OSES_BUILDS, VIOLET_ID } from '../defaultBuilds';
 import {
   DEFAULT_MY_PICKS,
   MY_PICKS_DEFAULTS,
@@ -59,6 +59,24 @@ describe('My Picks defaults', () => {
       expect(list?.heroId).toBe(spec.heroId);
       expect(list!.entries.length).toBeGreaterThan(0);
     }
+    expect(MY_PICKS_DEFAULTS.heroes['1']?.activeId).toBe('715046');
+  });
+
+  it('keeps the extra creator lists without replacing an oses default', () => {
+    expect(EXTRA_BUILDS).toHaveLength(4);
+    for (const spec of EXTRA_BUILDS) {
+      const picks = MY_PICKS_DEFAULTS.heroes[String(spec.heroId)];
+      const list = picks?.lists.find((row) => row.id === String(spec.buildId));
+      expect(list?.source, spec.hero).toMatchObject({
+        buildId: spec.buildId,
+        version: spec.version,
+        heroId: spec.heroId,
+      });
+      expect(picks?.activeId).toBe(String(spec.buildId));
+      expect(list!.entries.length).toBeGreaterThan(0);
+    }
+    expect(MY_PICKS_DEFAULTS.heroes['12']?.lists[0]?.source?.name).toContain('Beam');
+    expect(MY_PICKS_DEFAULTS.heroes['11']?.lists[0]?.source?.matchCopy).toBe(false);
   });
 
   it('uses the named Scarlet tiers and the optional flag everywhere else', () => {
@@ -127,9 +145,9 @@ describe('My Picks persistence', () => {
   it('rejects a broken store and round-trips an edit back to the bundled default', () => {
     expect(isMyPicksStore(DEFAULT_MY_PICKS)).toBe(true);
     expect(isMyPicksStore({ enabled: true, fallbackHeroId: VIOLET_ID })).toBe(false);
-    let store = addPick(DEFAULT_MY_PICKS, 11, { id: grit.id, name: grit.name }, 'main');
+    let store = addPick(DEFAULT_MY_PICKS, 72, { id: grit.id, name: grit.name }, 'main');
     expect(isMyPicksStore(JSON.parse(JSON.stringify(store)))).toBe(true);
-    expect(activeList(heroPicksFor(store, 11))?.entries).toEqual([
+    expect(activeList(heroPicksFor(store, 72))?.entries).toEqual([
       expect.objectContaining({ name: 'Grit', itemId: grit.id, tier: 'main', category: 'custom' }),
     ]);
     store = addPick(DEFAULT_MY_PICKS, 1, { id: grit.id, name: 'Grit' }, 'secondary');
