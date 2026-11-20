@@ -56,6 +56,8 @@ export interface OverlayState {
   timing?: SetTiming | null;
   /** Test-mode video only (set by main): `<n> ms` printed after every item plate's score, `~` when estimated. */
   msText?: string | null;
+  /** Item id to My Picks tier for the cards on this draft. Empty when the feature is off. Scores ignore it. */
+  picks?: Record<number, 'main' | 'secondary'>;
 }
 
 /** The blank state: nothing to draw. */
@@ -93,6 +95,10 @@ export interface DrawnRect {
   /** The `Enhanced +n` cell on the plate (frame px) and its text; null without one. For `reroll`, `plate` is the teal label. */
   chip?: FrameRect | null;
   chipText?: string | null;
+  /** My Picks tier. The teal best-pick circle is separate and still drawn when both apply. */
+  pick?: 'main' | 'secondary' | null;
+  /** The MY PICK or ALT tag under the card (frame px). */
+  pickTag?: FrameRect | null;
 }
 
 // The large circle an item sits in, relative to the small icon square the recogniser matches: measured on
@@ -130,6 +136,10 @@ export interface OverlayTheme {
   veil: string;
   /** Opacity of a non-advised plate (0..1). */
   dim: number;
+  /** Gold ring for a Main My Pick. Absent in older callers: the default gold is used. */
+  pickMain?: string;
+  /** Dimmer gold ring for a Secondary My Pick. */
+  pickAlt?: string;
 }
 const DEFAULT_THEME: OverlayTheme = {
   panel: 'rgba(16,19,20,0.85)',
@@ -140,6 +150,8 @@ const DEFAULT_THEME: OverlayTheme = {
   grey: '#8a9092',
   veil: 'rgba(0,0,0,0.35)',
   dim: 0.6,
+  pickMain: '#e6b325',
+  pickAlt: '#8d7b58',
 };
 function readTheme(): OverlayTheme {
   if (typeof document === 'undefined' || typeof getComputedStyle === 'undefined') return DEFAULT_THEME;
@@ -154,6 +166,8 @@ function readTheme(): OverlayTheme {
     grey: v('--overlay-grey', DEFAULT_THEME.grey),
     veil: v('--overlay-veil', DEFAULT_THEME.veil),
     dim: Number(v('--overlay-dim', String(DEFAULT_THEME.dim))) || DEFAULT_THEME.dim,
+    pickMain: v('--pick-main', DEFAULT_THEME.pickMain ?? '#e6b325'),
+    pickAlt: v('--pick-alt', DEFAULT_THEME.pickAlt ?? '#8d7b58'),
   };
 }
 
@@ -304,6 +318,80 @@ export function drawReading(
   return { x0: x / scaleX, y0: y / scaleY, x1: (x + w) / scaleX, y1: (y + h) / scaleY };
 }
 
+const PICK_INK = '#1b1408';
+
+function pickColor(theme: OverlayTheme, tier: 'main' | 'secondary'): string {
+  return (tier === 'main' ? theme.pickMain : theme.pickAlt) || (tier === 'main' ? '#e6b325' : '#8d7b58');
+}
+
+/** A ring outside the item circle: gold and glowing for Main, thin and dim for Secondary. The teal
+ *  best-pick stroke stays on the circle itself, so a card can wear both. */
+function drawPickRing(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number,
+  scaleX: number,
+  scaleY: number,
+  tier: 'main' | 'secondary',
+  theme: OverlayTheme,
+) {
+  const color = pickColor(theme, tier);
+  ctx.save();
+  ctx.strokeStyle = color;
+  if (tier === 'main') {
+    ctx.globalAlpha = 0.35;
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.ellipse(cx * scaleX, cy * scaleY, (r + 8) * scaleX, (r + 8) * scaleY, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(cx * scaleX, cy * scaleY, (r + 5) * scaleX, (r + 5) * scaleY, 0, 0, Math.PI * 2);
+    ctx.stroke();
+  } else {
+    ctx.globalAlpha = 0.55;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(cx * scaleX, cy * scaleY, (r + 4) * scaleX, (r + 4) * scaleY, 0, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/** The small tag under the card. Main says MY PICK, Secondary says ALT. */
+function drawPickTag(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number,
+  edge: number,
+  scaleX: number,
+  scaleY: number,
+  tier: 'main' | 'secondary',
+  theme: OverlayTheme,
+): FrameRect {
+  const label = tier === 'main' ? 'MY PICK' : 'ALT';
+  const font = Math.max(12, Math.round(edge * 0.16 * scaleY));
+  ctx.save();
+  ctx.font = `bold ${font}px sans-serif`;
+  const w = Math.round(ctx.measureText(label).width + font);
+  const h = Math.round(font * 1.45);
+  const x = Math.round(cx * scaleX - w / 2);
+  const y = Math.round((cy + r) * scaleY + Math.max(4, font * 0.35));
+  ctx.globalAlpha = tier === 'main' ? 1 : 0.7;
+  ctx.fillStyle = pickColor(theme, tier);
+  roundedRect(ctx, x, y, w, h, 4);
+  ctx.fill();
+  ctx.fillStyle = PICK_INK;
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+  ctx.fillText(label, x + w / 2, y + h / 2 + 1);
+  ctx.restore();
+  return { x0: x / scaleX, y0: y / scaleY, x1: (x + w) / scaleX, y1: (y + h) / scaleY };
+}
+
 /** Draws the plate above every offered card (tier badge + `Score: <n>`) and the 3 px teal outline around the best card,
  *  scaled from capture-frame pixels to the target canvas size. Shared by the preview canvas (BrawlView) and the Electron
  *  overlay window. The best card's plate is filled teal with dark text, the others are charcoal with a thin teal border
@@ -326,6 +414,7 @@ export function drawReads(
   bonuses: Record<number, number> = {},
   msText: string | null = null,
   names: Record<number, string> = {},
+  picks: Record<number, 'main' | 'secondary'> = {},
 ): DrawnRect[] {
   const drawn: DrawnRect[] = [];
   interface Slot {
@@ -336,6 +425,7 @@ export function drawReads(
     circle: Circle;
     o: PlateOpts | null;
     bonus: number | null;
+    pick: 'main' | 'secondary' | null;
   }
   const cards = reads.filter((r) => r.unsure || r.present);
   const hasBest = !reroll && cards.some((r) => !r.unsure && r.itemId === bestId);
@@ -350,6 +440,7 @@ export function drawReads(
         circle,
         o: { isBest: false, mode: 'unknown', badge: '?', label: '?', chip: null },
         bonus: null,
+        pick: null,
       };
     const isBest = hasBest && read.itemId === bestId;
     const score = scores[read.itemId];
@@ -371,6 +462,7 @@ export function drawReads(
               chip: null,
             },
       bonus,
+      pick: picks[read.itemId] ?? null,
     };
   });
   // veils first, so every plate is drawn over every veil
@@ -417,8 +509,10 @@ export function drawReads(
       ctx.ellipse(cx * scaleX, cy * scaleY, r * scaleX, r * scaleY, 0, 0, Math.PI * 2);
       ctx.stroke();
     }
+    if (sl.pick) drawPickRing(ctx, cx, cy, r, scaleX, scaleY, sl.pick, theme);
     const l = laid[i];
     const res = l ? drawPlate(ctx, l.g, scaleX, scaleY, theme, l.o) : null;
+    const pickTag = sl.pick ? drawPickTag(ctx, cx, cy, r, sl.read.match.edge, scaleX, scaleY, sl.pick, theme) : null;
     const score = sl.unknown ? null : (scores[sl.read.itemId] ?? null);
     drawn.push({
       kind: sl.unknown ? 'unknown' : sl.isBest ? 'best' : 'card',
@@ -430,6 +524,8 @@ export function drawReads(
       veiled: sl.veiled,
       chip: res?.chip ?? null,
       chipText: res?.chip && l ? l.o.chip : null,
+      pick: sl.pick,
+      pickTag,
     });
   });
   if (reroll) {

@@ -40,6 +40,15 @@ npm run check                              # Lint, typecheck, formatting and tes
 - Grades every hero and draftable item S, A, B or C on a second tab.
 - Tells you to switch to Borderless Windowed if the capture has been black for 10 seconds.
 - Has a test mode that opens a dummy Deadlock window with a real draft screenshot.
+- Highlights your own My Picks on the draft. Main items get a gold ring and a MY PICK tag. Secondary items get a dimmer ring and an ALT tag. The teal circle, the scores and the re-roll call stay as they are.
+
+## My Picks
+
+Open the My Picks tab to turn the highlights on or off, add and remove items, and move them between Main and Secondary. Each hero has its own list. While the app has read your hero, it uses that hero's list. When it has not, it uses the hero selected on the tab, which starts as Violet.
+
+Violet starts on Scarlet 9X v2 (build 998571). oses's Violet build (897240 v19) is saved beside it, and the other heroes start on one oses build each. You can import any public build by its id and version. That download runs only when you press Import, from api.deadlock-api.com, and the lists still work with no network. Optional categories land in Secondary and the rest in Main, except the bundled Scarlet list, which uses its own category map. Nothing is sent to the game.
+
+Regenerate the bundled lists with `node scripts/import-default-builds.mjs`.
 
 ## Documentation 📚
 
@@ -57,5 +66,7 @@ More details in the
 
 ## License 📄
 
-[MIT](LICENSE). Match data and item art come from [deadlock-api.com](https://deadlock-api.com);
-Deadlock is Valve's.
+[MIT](LICENSE). The original author is Jaxon Lee. This fork keeps that license and the copyright notice.
+Match data and item art come from [deadlock-api.com](https://deadlock-api.com);
+Deadlock is Valve's. The original project is
+[Gidntsquia/deadlock-street-brawl-helper](https://github.com/Gidntsquia/deadlock-street-brawl-helper).

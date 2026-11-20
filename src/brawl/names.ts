@@ -16,7 +16,9 @@ export const NAME_MIN_MARGIN = 0.08;
 /** Reads with fewer letters than this must match a name exactly (Grit, Decay, Leech are the short names). */
 const SHORT_READ = 5;
 
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z]/g, '');
+/** Letters only, lower case. Shared with My Picks so a build name and an OCR line use one key. */
+export const normaliseName = (s: string) => s.toLowerCase().replace(/[^a-z]/g, '');
+const norm = normaliseName;
 
 const lev = (a: string, b: string): number => {
   let prev = Array.from({ length: b.length + 1 }, (_, j) => j);

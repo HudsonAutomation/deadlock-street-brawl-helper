@@ -1429,6 +1429,8 @@ footer {
   --overlay-grey: #8a9092;
   --overlay-veil: rgba(0, 0, 0, 0.35);
   --overlay-dim: 0.6;
+  --pick-main: #e6b325;
+  --pick-alt: #8d7b58;
   --teal: #2ec4b6;
   --teal-dim: #1b6f68;
   --teal-ink: #06201d;
@@ -1769,4 +1771,145 @@ body:not(.overlay-window) #root {
 .brawl-testvideo input[type='range'] {
   width: 12rem;
   accent-color: var(--teal, #2ec4b6);
+}
+
+.brawl-card.pick-main {
+  box-shadow: inset 0 0 0 2px var(--pick-main);
+}
+.brawl-card.best.pick-main {
+  border-color: var(--teal);
+  box-shadow:
+    0 0 0 3px rgba(46, 196, 182, 0.25),
+    inset 0 0 0 2px var(--pick-main);
+}
+.brawl-card.pick-secondary {
+  box-shadow: inset 0 0 0 1px var(--pick-alt);
+}
+.brawl-card.best.pick-secondary {
+  border-color: var(--teal);
+  box-shadow:
+    0 0 0 3px rgba(46, 196, 182, 0.25),
+    inset 0 0 0 1px var(--pick-alt);
+}
+.pick-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  background: var(--pick-main);
+  color: #1b1408;
+}
+.pick-tag.alt {
+  background: transparent;
+  color: #d9c7a2;
+  border: 1px solid var(--pick-alt);
+  opacity: 0.85;
+}
+
+.my-picks {
+  display: grid;
+  gap: 10px;
+}
+.my-picks h2 {
+  font-size: 15px;
+}
+.my-picks-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+}
+.my-picks-toggle input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.my-picks-field,
+.my-picks-import label {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.my-picks select,
+.my-picks input:not([type='checkbox']) {
+  width: 100%;
+  min-height: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font: inherit;
+  font-weight: 700;
+}
+.my-picks-meta p,
+.my-picks-tier p {
+  margin: 2px 0;
+}
+.my-picks-flag {
+  color: #e6c98a;
+  font-weight: 800;
+  font-size: 13px;
+}
+.my-picks-tier ul,
+.my-picks-suggest {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pick-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+.pick-row-name {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+}
+.pick-row-name small,
+.pick-unknown {
+  color: var(--muted);
+  font-size: 11px;
+}
+.pick-unknown {
+  color: #e0b15a;
+}
+.pick-row button,
+.my-picks-suggest button {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+}
+.my-picks-add {
+  display: grid;
+  gap: 6px;
+}
+.my-picks-suggest button {
+  text-align: left;
+  padding: 4px 0;
+}
+.my-picks-import-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: end;
+}
+.my-picks-message {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+.my-picks-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
