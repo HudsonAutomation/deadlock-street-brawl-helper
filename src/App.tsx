@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import type { Ability, Hero, Item } from './types';
 import { img, loadCore, type Manifest } from './data/load';
 import { BrawlView } from './components/BrawlView';
+import { MyPicksPanel } from './components/MyPicksPanel';
 import { TierList } from './components/TierList';
 import { debugDefault } from './brawl/debugMode';
+import { DEFAULT_MY_PICKS, isMyPicksStore } from './brawl/myPicks';
 import { TitleBar } from './components/TitleBar';
 import { usePersisted, isNumber, isString } from './hooks/usePersisted';
 
@@ -11,6 +13,7 @@ const INFERNUS = 1;
 
 const TABS = [
   { key: 'advisor', label: 'Draft advisor' },
+  { key: 'picks', label: 'My Picks' },
   { key: 'tiers', label: 'Street Brawl Tier List' },
 ] as const;
 type Tab = (typeof TABS)[number]['key'];
@@ -23,6 +26,8 @@ export default function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [heroId, setHeroId] = usePersisted('heroId', isNumber, INFERNUS);
   const [tab, setTab] = usePersisted<Tab>('tab', isTab, 'advisor');
+  const [myPicks, setMyPicks] = usePersisted('myPicks', isMyPicksStore, DEFAULT_MY_PICKS);
+  const [heroNotRead, setHeroNotRead] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [debug, setDebug] = useState(() => debugDefault(__APP_VERSION__, import.meta.env.DEV)); // Debug panel: on in dev and rc builds
   const [now] = useState(Date.now);
@@ -84,6 +89,8 @@ export default function App() {
   const fetchedDate = fetchedAt?.slice(0, 10);
   const ageDays = fetchedAt ? Math.floor((now - Date.parse(fetchedAt)) / 86400000) : null;
   const stale = ageDays !== null && ageDays > 14;
+  const heroKnown = !heroNotRead && (heroPinned || heroSource === 'detected' || heroGuessed);
+  const pickHeroId = heroKnown ? hero.id : myPicks.fallbackHeroId;
 
   return (
     <>
@@ -92,7 +99,7 @@ export default function App() {
         {tab === 'advisor' && <img className="hero-portrait" src={img(hero.images.small)} alt="" />}
         <div>
           <h1>
-            {tab === 'advisor' ? hero.name : 'Street Brawl Tier List'}
+            {tab === 'advisor' ? hero.name : tab === 'picks' ? 'My Picks' : 'Street Brawl Tier List'}
             {tab === 'advisor' && heroGuessed && !heroPinned ? (
               <span className="hero-auto-badge hero-guessed-badge" title="Guessed from the scoreboard portraits">
                 guessed
@@ -141,7 +148,7 @@ export default function App() {
                 )}
               </>
             )
-          ) : (
+          ) : tab === 'tiers' ? (
             <div className="sub">
               Heroes and items graded by win rate and usage, data from the 30 days to {fetchedDate}
               {ageDays !== null && (
@@ -151,7 +158,7 @@ export default function App() {
                 </span>
               )}
             </div>
-          )}
+          ) : null}
         </div>
       </header>
       <nav className="tabs" role="tablist" aria-label="View">
@@ -178,6 +185,19 @@ export default function App() {
           onHero={handleHero}
           onGuessed={setHeroGuessed}
           debug={debug}
+          myPicks={myPicks}
+          pickHeroId={pickHeroId}
+          onHeroNotRead={setHeroNotRead}
+        />
+      </div>
+      <div hidden={tab !== 'picks'}>
+        <MyPicksPanel
+          heroes={heroes}
+          items={items}
+          store={myPicks}
+          setStore={setMyPicks}
+          liveHeroId={pickHeroId}
+          heroNotRead={!heroKnown}
         />
       </div>
       {/* Kept mounted too: unmounting refetched the tier list, flashed "Loading…" and reset its filters on every switch. */}

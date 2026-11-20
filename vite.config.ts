@@ -37,13 +37,15 @@ export default defineConfig(({ mode, command }) => {
             // Electron's sandboxed preload loader rejects ESM ("Cannot use import statement outside a
             // module"); package.json has "type": "module" so vite-plugin-electron's default output would
             // otherwise emit ESM. Force CommonJS and name the file .cjs so Node/Electron never guesses ESM
-            // from the package type.
+            // from the package type. Vite 8 (rolldown) ignores rollupOptions.output.format, so the same
+            // format is set again on rolldownOptions.
             vite: {
               define: defs,
               build: {
                 outDir: 'electron-dist',
                 lib: { entry: 'electron/preload.ts', formats: ['cjs'], fileName: () => 'preload.cjs' },
                 rollupOptions: { output: { format: 'cjs' } },
+                rolldownOptions: { output: { format: 'cjs' } },
               },
             },
           },

@@ -82,6 +82,7 @@ export default function OverlayApp() {
           bonusesFromAdvice(state.advice),
           state.msText ?? null,
           namesFromAdvice(state.advice),
+          state.picks ?? {},
         ),
       );
     // test-mode video: tell main once per set that its plates are on the canvas (it logs `video.advice` from this)
