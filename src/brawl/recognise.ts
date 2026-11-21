@@ -13,7 +13,11 @@ export interface RGBImage {
   origin?: { x: number; y: number; fullWidth: number; fullHeight: number };
 }
 
-/** Draft screen at 2560x1440: three cards, icon centres and icon edge length in pixels. */
+/** Draft screen at 2560x1440: three cards, icon centres and icon edge length in pixels.
+ *  This 2560x1440 frame is the only layout reference. `cardAnchors` and `rerollButtonRect` scale
+ *  by width/2560 and height/1440, and the overlay uses `cardSquares(frameW, frameH)`. Checked at
+ *  2560x1440 with Windows display scaling at 100%: the anchors did not need a retune. A 1920x1080
+ *  size is only the test-mode dummy window, so the recogniser gets a frame tall enough to read. */
 export const BRAWL_LAYOUT = {
   ref: { width: 2560, height: 1440 },
   cards: [

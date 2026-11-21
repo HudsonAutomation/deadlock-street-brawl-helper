@@ -1,5 +1,5 @@
 {
-  "name": "deadlock-street-brawl-helper",
+  "name": "deadlock-item-assist",
   "private": true,
   "version": "0.6.0",
   "type": "module",
@@ -60,8 +60,8 @@
     "vitest": "^5.0.1"
   },
   "build": {
-    "appId": "com.deadlockstreetbrawl.helper",
-    "productName": "Deadlock Street Brawl Helper",
+    "appId": "com.deadlockitemassist.dia",
+    "productName": "Deadlock Item Assist",
     "directories": {
       "output": "release"
     },
@@ -90,7 +90,8 @@
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Deadlock-Item-Assist-Setup-${version}.${ext}"
     }
   }
 }

@@ -16,6 +16,8 @@ interface AdvicePanelProps {
   hero: Hero;
   took: (r: RankedOffer) => void;
   rerolled: () => void;
+  /** Item id to My Picks tier. Does not change order or scores. */
+  picks?: Record<number, 'main' | 'secondary'>;
 }
 
 /** Split out so the loading/error state (shown while `input` is null, e.g. right after a hero change)
@@ -34,6 +36,7 @@ export function AdvicePanel({
   hero,
   took,
   rerolled,
+  picks = {},
 }: AdvicePanelProps) {
   if (!input) {
     return (
@@ -64,32 +67,37 @@ export function AdvicePanel({
           Took {lastTaken}, {owned.length} owned
         </div>
       )}
-      {ranked.map((r, k) => (
-        <button
-          key={r.item.id}
-          className={`brawl-card ${k === 0 && !reroll ? 'best' : ''}`}
-          onClick={() => took(r)}
-          title={`score ${r.score.toFixed(2)}, ${
-            capture === 'on' ? 'picks are read from the inventory grid; click only if it missed' : 'I took this one'
-          }`}
-        >
-          <ItemTile item={r.item} />
-          <span className="brawl-card-body">
-            <b>
-              {k === 0 && !reroll ? 'TAKE' : `#${k + 1}`} {r.item.name}
-              {r.enhanced ? ' (enhanced)' : ''}
-            </b>
-            <small>
-              score {r.score.toFixed(2)} ,{' '}
-              {k === 0 ? 'best' : `-${((1 - r.score / ranked[0].score) * 100).toFixed(0)}% vs best`}, used by{' '}
-              {(r.usage * 100).toFixed(0)}% of {hero.name}s
-              {r.winRate !== null ? `, wins ${(r.winRate * 100).toFixed(0)}%` : ''}
-              {r.known ? '' : ', no brawl data'}
-            </small>
-            {r.why.length > 0 && <small>{r.why.join('; ')}</small>}
-          </span>
-        </button>
-      ))}
+      {ranked.map((r, k) => {
+        const pick = picks[r.item.id];
+        return (
+          <button
+            key={r.item.id}
+            className={`brawl-card ${k === 0 && !reroll ? 'best' : ''} ${pick ? `pick-${pick}` : ''}`}
+            onClick={() => took(r)}
+            title={`score ${r.score.toFixed(2)}, ${
+              capture === 'on' ? 'picks are read from the inventory grid; click only if it missed' : 'I took this one'
+            }`}
+          >
+            <ItemTile item={r.item} />
+            <span className="brawl-card-body">
+              <b>
+                {k === 0 && !reroll ? 'TAKE' : `#${k + 1}`} {r.item.name}
+                {r.enhanced ? ' (enhanced)' : ''}
+                {pick === 'main' && <span className="pick-tag">MY PICK</span>}
+                {pick === 'secondary' && <span className="pick-tag alt">ALT</span>}
+              </b>
+              <small>
+                score {r.score.toFixed(2)} ,{' '}
+                {k === 0 ? 'best' : `-${((1 - r.score / ranked[0].score) * 100).toFixed(0)}% vs best`}, used by{' '}
+                {(r.usage * 100).toFixed(0)}% of {hero.name}s
+                {r.winRate !== null ? `, wins ${(r.winRate * 100).toFixed(0)}%` : ''}
+                {r.known ? '' : ', no brawl data'}
+              </small>
+              {r.why.length > 0 && <small>{r.why.join('; ')}</small>}
+            </span>
+          </button>
+        );
+      })}
       {reroll && reroll.holdValue > 0 && (
         <div className="muted">saving this set for a later choice is worth {reroll.holdValue.toFixed(2)}</div>
       )}

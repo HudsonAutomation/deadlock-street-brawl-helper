@@ -1,4 +1,4 @@
-# AGENTS.md — Deadlock Street Brawl Helper
+# AGENTS.md — Deadlock Item Assist
 
 Repo constitution for planner / worker / evaluator agents. Overrides generic stack defaults.
 
@@ -225,7 +225,7 @@ in `win:e2e`/`win:demo` drives the actual game:
   resolutions.
 - User docs live in the GitHub wiki; README is quickstart only. `plans/` is gitignored planner state.
 - The game window is matched by exact title `Deadlock` (`electron/main.ts`, `electron/gameWindow.ts`), never
-  by substring: the app's own window is "Deadlock Street Brawl Helper".
+  by substring: the app's own window is "Deadlock Item Assist".
 - `screenshots/` is gitignored reference material (full draft frames the user supplies); it is not a fixture
   directory and nothing in tests may depend on it.
 - `scripts/win/frames/` holds the harness's hand-measured `labels.json` (boxes in px at the 2000x1125 frames

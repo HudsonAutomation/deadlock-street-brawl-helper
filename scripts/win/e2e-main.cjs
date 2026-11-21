@@ -365,7 +365,7 @@ async function main() {
         strip.h === 32 &&
         strip.drag === 'drag' &&
         strip.btn === 'no-drag' &&
-        strip.name.includes('Deadlock Street Brawl Helper') &&
+        strip.name.includes('Deadlock Item Assist') &&
         strip.sel === 'none' &&
         Math.abs(cb.width - cc.width) <= 2 &&
         Math.abs(cb.height - cc.height) <= 2 &&

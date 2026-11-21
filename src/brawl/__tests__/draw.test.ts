@@ -184,6 +184,39 @@ describe('drawReads', () => {
     expect(rr.plate!.y1).toBeLessThanOrEqual(rr.y0);
   });
 
+  it('draws a gold MY PICK ring outside the teal best circle, and a dimmer ALT tag on the other card', () => {
+    const ctx = stubCtx();
+    const drawn = drawReads(
+      ctx,
+      [read(1, 10), read(2, 200)],
+      1,
+      1,
+      1,
+      2560,
+      1440,
+      false,
+      SCORES,
+      null,
+      GRADES,
+      THEME,
+      {},
+      null,
+      {},
+      { 1: 'main', 2: 'secondary' },
+    );
+    expect(drawn.map((d) => d.kind)).toEqual(['best', 'card']);
+    expect(drawn.map((d) => d.pick)).toEqual(['main', 'secondary']);
+    expect(ctx.strokes.some((s) => s.color === THEME.teal && s.width === 3)).toBe(true);
+    expect(ctx.strokes.filter((s) => s.color === '#e6b325').map((s) => s.width)).toEqual([8, 3]);
+    expect(ctx.strokes.filter((s) => s.color === '#8d7b58')).toEqual([{ color: '#8d7b58', width: 2 }]);
+    expect(ctx.texts.map((t) => t.text)).toEqual(expect.arrayContaining(['MY PICK', 'ALT']));
+    expect(ctx.alphas).toContain(0.7);
+    expect(drawn[0].pickTag).not.toBeNull();
+    expect(drawn[1].pickTag).not.toBeNull();
+    // the gold tag sits under the card, clear of the score plate
+    expect(drawn[0].pickTag!.y0).toBeGreaterThan(drawn[0].y1 - 1);
+  });
+
   it('scales plates with the canvas', () => {
     const a = run(stubCtx(), false, 1, 1);
     const b = run(stubCtx(), false, 2, 2);

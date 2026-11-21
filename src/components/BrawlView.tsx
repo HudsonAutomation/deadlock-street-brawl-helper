@@ -47,6 +47,8 @@ import {
   type OverlayAdvice,
   type OverlayState,
 } from '../brawl/draw';
+import { tiersForOffers } from '../brawl/buildImport';
+import { activeList, DEFAULT_MY_PICKS, heroPicksFor, type MyPicksStore } from '../brawl/myPicks';
 import { FirstRun } from './FirstRun';
 import { SessionReport } from './SessionReport';
 import { PROBLEM_TEXT, statusFor, type Env, type Problem } from '../brawl/problems';
@@ -107,6 +109,12 @@ interface Props {
   pinned?: boolean;
   /** The hidden Debug panel (Ctrl+Shift+D) is open: shows the manual controls and the full advice list. */
   debug?: boolean;
+  /** Saved My Picks. Highlights only; the ranking does not read this. */
+  myPicks?: MyPicksStore;
+  /** Hero whose list to highlight when this draft has a known hero. Otherwise the settings hero is used. */
+  pickHeroId?: number;
+  /** The draft hero was not read, so My Picks falls back to the settings hero. */
+  onHeroNotRead?: (notRead: boolean) => void;
 }
 
 /** Street Brawl draft advisor: the three cards on screen (read from a screen capture or typed in), ranked for this hero. */
@@ -139,6 +147,9 @@ export function BrawlView({
   onGuessed,
   pinned = false,
   debug: debugProp = false,
+  myPicks = DEFAULT_MY_PICKS,
+  pickHeroId,
+  onHeroNotRead,
 }: Props) {
   const debug = __DEV_TOOLS__ && debugProp; // a plain production build has no debug panel
   const [loaded, setLoaded] = useState<{ heroId: number; analytics: BrawlAnalytics } | null>(null);
@@ -165,6 +176,8 @@ export function BrawlView({
   /** No sure hero read this match and none kept: the window's own hero is used and the panel stays away. */
   const [heroNotRead, setHeroNotRead] = useState(false);
   const heroNotReadRef = useRef(false);
+  const onHeroNotReadRef = useRef(onHeroNotRead);
+  onHeroNotReadRef.current = onHeroNotRead;
   // Which hero the advice uses, per match (heroChoice.ts): hand pick > loading-screen name > scoreboard portrait.
   const heroTrackerRef = useRef(new HeroTracker());
   const loadingWarmAtRef = useRef(-Infinity);
@@ -428,6 +441,16 @@ export function BrawlView({
   const takeOkRef = useRef(true);
   takeOkRef.current = takeOk;
   const ranked: RankedOffer[] = useMemo(() => advice?.sets[choice - 1] ?? [], [advice, choice]);
+  const pickMap = useMemo(() => {
+    if (!myPicks.enabled) return {};
+    const id = heroNotRead ? myPicks.fallbackHeroId : (pickHeroId ?? hero.id);
+    return tiersForOffers(
+      ranked.map((r) => ({ itemId: r.item.id, name: r.item.name })),
+      activeList(heroPicksFor(myPicks, id)),
+    );
+  }, [myPicks, hero.id, heroNotRead, pickHeroId, ranked]);
+  const picksRef = useRef(pickMap);
+  picksRef.current = pickMap;
   useEffect(() => {
     rankedRef.current = ranked;
   }, [ranked]);
@@ -489,13 +512,15 @@ export function BrawlView({
         advice: draft ? overlayAdviceRef.current : null,
         draft,
         panel: tipNow,
+        picks: draft ? picksRef.current : {},
       };
     }
     // Plates, take mark and re-roll call are shown as one step and then held: nothing about them changes until the set
     // does (a hover, a late re-roll read or an owned-list update must not move them).
     if (state.draft && state.reads.some((r) => r.present)) {
       const f = frozenRef.current;
-      if (f && f.key === acceptedKeyRef.current) state = { ...f.state, rerollRect: state.rerollRect, panel: null };
+      if (f && f.key === acceptedKeyRef.current)
+        state = { ...f.state, rerollRect: state.rerollRect, panel: null, picks: picksRef.current };
       else {
         const timing = timingRef.current.get(acceptedKeyRef.current);
         if (timing) state = { ...state, timing: { ...timing, sentWall: Date.now() } };
@@ -545,7 +570,7 @@ export function BrawlView({
     tipRef.current = tip;
     pushOverlay();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- pushOverlay only reads refs
-  }, [input, hero, round, choice, reroll, ranked, draftOpen, tip, gradeById]);
+  }, [input, hero, round, choice, reroll, ranked, draftOpen, tip, gradeById, myPicks, heroNotRead]);
 
   /** Ends a Detect now try and logs `detect.manual` with the outcome. */
   function finishDetect(outcome: 'hit' | 'miss' | 'failed') {
@@ -1169,6 +1194,9 @@ export function BrawlView({
             gradesFromAdvice(overlayAdviceRef.current),
             undefined,
             bonusesFromAdvice(overlayAdviceRef.current),
+            null,
+            {},
+            picksRef.current,
           );
         }
       }
@@ -1375,6 +1403,7 @@ export function BrawlView({
         const notRead = pick.source === 'selected';
         heroNotReadRef.current = notRead;
         setHeroNotRead(notRead);
+        onHeroNotReadRef.current?.(notRead);
         const guessName = heroes.find((h) => h.id === pick.heroId)?.name ?? '';
         setGuessed(pick.guessed, pick.guessed && newMatch ? guessName : null);
         const me = pick.heroId;
@@ -1589,6 +1618,7 @@ export function BrawlView({
       hero={hero}
       took={took}
       rerolled={rerolled}
+      picks={pickMap}
     />
   );
 
