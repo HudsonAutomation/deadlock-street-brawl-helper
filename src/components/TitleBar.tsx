@@ -6,7 +6,7 @@ export function TitleBar({ debug = false }: { debug?: boolean }) {
   return (
     <div className="titlebar">
       <img className="titlebar-icon" src="./apple-touch-icon.png" alt="" draggable={false} />
-      <span className="titlebar-name">Deadlock Street Brawl Helper</span>
+      <span className="titlebar-name">Deadlock Item Assist</span>
       {debug && <span className="titlebar-debug">DEBUG</span>}
       <button className="titlebar-btn" aria-label="Minimise" onClick={() => api.minimizeWindow()}>
         <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">

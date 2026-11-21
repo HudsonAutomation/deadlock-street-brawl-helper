@@ -1,14 +1,14 @@
-# Deadlock Street Brawl Helper 🃏
+# Deadlock Item Assist (DIA) 🃏
 
 <p align="center">
   <img alt="One real Street Brawl draft at normal speed: it shows the Reading sign, then score plates on the cards with the advised one marked in teal" src="docs/brawl-overlay.gif">
 </p>
 
-A draft advisor for [Deadlock](https://store.steampowered.com/app/1422450/Deadlock/)'s Street Brawl mode. It reads the draft screen while you play, ranks the three cards you're offered, and says whether the set is worth a re-roll. The advice is drawn over the draft screen. Scores are built from Street Brawl matches since the 2026-10-30 patch from [deadlock-api.com](https://deadlock-api.com), for all 44 heroes.
+Deadlock Item Assist (DIA) is a draft advisor for [Deadlock](https://store.steampowered.com/app/1422450/Deadlock/)'s Street Brawl mode. It reads the draft screen while you play, ranks the three cards you're offered, and says whether the set is worth a re-roll. The advice is drawn over the draft screen. Scores are built from Street Brawl matches since the 2026-10-30 patch from [deadlock-api.com](https://deadlock-api.com), for all 44 heroes.
 
 ## Quickstart 🚀
 
-Requires Windows. Get the app from the [latest release](https://github.com/Gidntsquia/deadlock-street-brawl-helper/releases/latest): a portable `.exe` and an installer.
+Requires Windows. Get the app from the [latest release](https://github.com/HudsonAutomation/deadlock-street-brawl-helper/releases/latest): a portable `.exe` and an installer.
 
 1. In Deadlock's Video settings, set Display Mode to Borderless Windowed.
 2. Run the app. It finds the Deadlock window on its own.
@@ -66,9 +66,12 @@ More details in the
 - [Data Pipeline](https://github.com/Gidntsquia/deadlock-street-brawl-helper/wiki/Data-Pipeline) — what fetch-data downloads and the data window
 - [Development](https://github.com/Gidntsquia/deadlock-street-brawl-helper/wiki/Development) — code layout, scripts, checks
 
+## Credits
+
+Deadlock Item Assist (DIA) is a fork of [Gidntsquia/deadlock-street-brawl-helper](https://github.com/Gidntsquia/deadlock-street-brawl-helper). That project was originally split out of [deadlock-optimal-build-finder](https://github.com/Gidntsquia/deadlock-optimal-build-finder).
+
 ## License 📄
 
-[MIT](LICENSE). The original author is Jaxon Lee. This fork keeps that license and the copyright notice.
+[MIT](LICENSE). The original copyright, Jaxon Lee 2026, stays in that file. This fork adds its own copyright line, which the MIT terms allow.
 Match data and item art come from [deadlock-api.com](https://deadlock-api.com);
-Deadlock is Valve's. The original project is
-[Gidntsquia/deadlock-street-brawl-helper](https://github.com/Gidntsquia/deadlock-street-brawl-helper).
+Deadlock is Valve's.

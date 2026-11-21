@@ -653,7 +653,7 @@ export function dotBadgeRect(canvasH: number) {
 }
 
 /** Draws the lobby badge: status dot (teal watching / amber reading / grey failed), the app logo, the
- *  "STREET BRAWL ADVISOR" title and a status line; returns what it drew (the dot, as before). */
+ *  "DIA" title and a status line; returns what it drew (the dot, as before). */
 export function drawDot(
   ctx: CanvasRenderingContext2D,
   state: DotState,
@@ -697,7 +697,7 @@ export function drawDot(
   ctx.textBaseline = 'alphabetic';
   ctx.fillStyle = theme.text;
   ctx.font = `bold ${13 * k}px sans-serif`;
-  ctx.fillText('STREET BRAWL ADVISOR', 54 * k, 15 * k);
+  ctx.fillText('DIA', 54 * k, 15 * k);
   ctx.fillStyle = theme.muted;
   ctx.font = `${10.5 * k}px sans-serif`;
   ctx.fillText(`${DOT_WORD[state]}, F8`, 54 * k, 27.5 * k);

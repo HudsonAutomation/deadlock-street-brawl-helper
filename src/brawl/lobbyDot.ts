@@ -35,9 +35,9 @@ export const lobbyDotVisible = (s: LobbyState, foreground: boolean): boolean => 
 
 export type DotState = 'watching' | 'reading' | 'failed';
 export const DOT_TEXT: Record<DotState, string> = {
-  watching: 'Brawl Helper: watching for draft. F8 = detect now',
-  reading: 'Brawl Helper: reading draft. F8 = detect now',
-  failed: 'Brawl Helper: capture failed. F8 = detect now',
+  watching: 'DIA: watching for draft. F8 = detect now',
+  reading: 'DIA: reading draft. F8 = detect now',
+  failed: 'DIA: capture failed. F8 = detect now',
 };
 export const dotState = (o: { captureFailed: boolean; capturing: boolean }): DotState =>
   o.captureFailed ? 'failed' : o.capturing ? 'reading' : 'watching';

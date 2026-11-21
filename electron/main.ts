@@ -63,7 +63,11 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL;
 const GAME_WINDOW_TITLE = 'Deadlock'; // exact match only (electron/gameWindow.ts#isGameWindowTitle):
-// the app's own control window is titled "Deadlock Street Brawl Helper" and must never match.
+// the app's own control window is titled "Deadlock Item Assist" and must never match.
+const APP_TITLE = 'Deadlock Item Assist';
+// Settings stay in the folder this app already uses. A new product name must not move userData,
+// and this never deletes or copies that folder.
+const USER_DATA_DIR = 'deadlock-street-brawl-helper';
 // Dev only (the Vite dev server is running): timing/CPU summaries every 10 s. A packaged or built app has no dev
 // server, records nothing and starts no timer.
 const perf = createPerf(!!DEV_SERVER_URL, 'electron-main');
@@ -322,7 +326,7 @@ function createControlWindow() {
     minHeight: MIN_HEIGHT,
     frame: false, // the page draws its own title strip (src/components/TitleBar.tsx); no Windows title bar or menu
     backgroundColor: WINDOW_BG,
-    title: 'Deadlock Street Brawl Helper',
+    title: APP_TITLE,
     icon: appIconPath(),
     show: !process.env.BRAWL_E2E,
     webPreferences: {
@@ -380,6 +384,7 @@ function overlayOnTop(move = false) {
 
 function createOverlayWindow() {
   overlay = new BrowserWindow({
+    title: APP_TITLE,
     frame: false,
     transparent: true,
     alwaysOnTop: !overlayNotTop,
@@ -1412,7 +1417,7 @@ function appIconPath(): string {
 function setupTray() {
   const icon = nativeImage.createFromPath(appIconPath());
   tray = new Tray(icon.isEmpty() ? nativeImage.createEmpty() : icon);
-  tray.setToolTip('Deadlock Street Brawl Helper');
+  tray.setToolTip(APP_TITLE);
   tray.setContextMenu(
     Menu.buildFromTemplate([
       { label: 'Toggle overlay', click: toggleOverlay },
@@ -1460,8 +1465,10 @@ if (process.env.BRAWL_E2E && !app.isReady()) app.disableHardwareAcceleration();
 // borderless capture access that would remove it). Chromium's older GDI window capturer has no border, so switch the
 // WGC window capturer off: the game window is read without any outline. The harnesses (which are already `ready`
 // when this module loads) pass the same switch themselves; keep the two in sync (scripts/win/*-main.cjs).
-if (!app.isReady())
+if (!app.isReady()) {
+  app.setPath('userData', path.join(app.getPath('appData'), USER_DATA_DIR));
   app.commandLine.appendSwitch('disable-features', 'CalculateNativeWinOcclusion,AllowWgcWindowCapturer');
+}
 
 app.whenReady().then(() => {
   setupDisplayMediaHandler();

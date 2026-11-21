@@ -88,7 +88,7 @@ function loadDwmapi(koffi: typeof import('koffi')) {
 }
 
 /** Exact match (trimmed, case-insensitive) so the game's window ('Deadlock') is never confused with the
- *  app's own control window ('Deadlock Street Brawl Helper'), which contains it as a substring. */
+ *  app's own control window ('Deadlock Item Assist'), which contains it as a substring. */
 export function isGameWindowTitle(title: string, needle: string): boolean {
   return title.trim().toLowerCase() === needle.trim().toLowerCase();
 }
