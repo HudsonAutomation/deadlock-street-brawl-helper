@@ -50,9 +50,15 @@ Name reader down, in addition to the status: `Name reader not running`.
 
 The same problem sentence is drawn on the overlay for 5 s.
 
-## Advice list in the window
+## What a shipping window shows
 
-Shown on the advisor tab, and repeated in the debug panel when that panel is on.
+On Windows, with a final build, the advisor tab is the status line, at most one problem, the name-reader line, the hero-not-read line, and the collapsed ability-order editor. It does not list the three cards, and it has no capture button, no Detect now button, and no screenshot picker. The plates on the overlay are the advice.
+
+The card list, capture controls, round and choice selects, and the session report appear only when the debug panel is open, or when the same page is opened in a browser rather than the desktop app.
+
+## Advice list
+
+Shown in the debug panel, and in the browser page. Not on the shipping desktop advisor.
 
 - While data is loading: `Loading Street Brawl data…`
 - No cards and capture is off: `No cards yet. Start the screen capture above, or pick the three cards yourself in "Cards on screen" below.`
@@ -78,7 +84,7 @@ Help: `Pick a round, then click a point to buy it in that round. Click a bought 
 
 Five buttons, `Round 1` through `Round 5`. The selected round is pressed. The title is `Round <n>: <points> points, <left> left`. Points handed out are 6, 6, 5, 5, 10. Unspent points carry forward.
 
-Four abilities in bar order, labelled 1, 2, 3, 4. Those labels are positions, not the player's keybinds. Each ability has three pills, costs 1, 2, and 5, top to bottom. A pill's accessible name is `<ability> <cost> point upgrade, round N` or `not bought`. A bought pill shows `R<n>`.
+Four abilities in bar order, labelled 1, 2, 3, 4. Those labels are positions, not the player's keybinds. Each ability has three pills, drawn as the game draws them: the 5-point upgrade on top, then 2, then 1. A pill's accessible name is `<ability> <cost> point upgrade, round N` or `not bought`. A bought pill shows `R<n>`. A pill bought in an earlier round than the one selected shows a check and no cost. Any other pill shows a diamond and the cost.
 
 The evidence line is `Your order` when a custom order is in use, otherwise `Default order: <n> matches, <w>% win rate` or `Default order: No reliable order`.
 
@@ -91,8 +97,8 @@ Place those steps onto the five rounds without spending more points than the rou
 ### Editing
 
 - Click an unbought pill to buy it in the selected round. Click a bought pill to sell it and every higher tier of that ability.
-- A pill needs the cheaper pill under it bought in the same round or an earlier one.
-- Overspending is refused. The message is the same text the validator returns:
+- A pill needs the cheaper pill under it bought in the same round or an earlier one. A refused click does not save, and says `<ability>: buy the <cost> point upgrade first, in round N or an earlier one.`
+- Overspending is refused and not saved. The message is the same text the validator returns:
   - `Pick a round for every point.`
   - `Ability <n>: a 2 point upgrade comes before the one under it.` or the same with 5.
   - `Round <n>: <spent> points spent by now, only <cap> handed out.`
@@ -113,14 +119,14 @@ Three lines:
 2. `Borderless Windowed`, ticked when the window has no caption and capture is not in the black state. If the style cannot be read, the line is the instruction `Set Display Mode to Borderless Windowed in Video settings` with no tick. If the black hint is active, this line is replaced by the black-capture sentence and is not ticked.
 3. `Resolution readable`, ticked when the window is at least 1280 by 720.
 
-`Show me` starts test mode on a built-in draft picture. `Got it` dismisses the panel and remembers that.
+`Show me` starts test mode on the built-in picture `choice1` and dismisses the panel. `Got it` dismisses it and remembers that.
 
 ## Test mode
 
 Button, in the debug panel in development builds, and reachable from the tray in every build: `Test mode (dummy Deadlock window)` / `Turn test mode off`.
 
 - Opens the dummy described in [02-shell.md](02-shell.md), showing one picture from the app's demo set.
-- A Screenshot select switches the picture live without restarting.
+- In a development build, a Screenshot select switches the picture live without restarting. A final build has no picker: the tray and `Show me` always open `choice1`. The ability to set a frame still exists for a harness.
 - The normal find, capture, recognise, advise, and draw path runs against the dummy.
 - A real Deadlock is not found, probed, captured, or moved.
 - Capture is allowed only from the dummy's own source. The desktop capture list does not include the app's own windows, so the dummy is served by its source id.
@@ -138,7 +144,7 @@ While on, the panel includes:
 - `Start capture` / `Stop capture` / `Starting`
 - `Detect now (F8)`, disabled when no game is found or a detect is in progress
 - Test mode button and the screenshot select
-- Round and choice controls, and re-roll count. Changing them clears the accepted set
+- Round and choice controls, and re-roll count. The round options include the round's soul budget from the mode config: `1 (5600 souls)` through `5 (14000 souls)` on the shipped snapshot. Each choice option names its normal tier and its rare tier, for example `1 of 3, tier 1 (rare 2)`. Re-rolls left is a number from 0 to 3. The config starts each round at 1 until a caption is read. Changing round or choice clears the accepted set. The selected round and the four enemy ids are remembered across launches.
 - Enemy hero toggles and an owned-item list
 - The advice list
 - The ability order editor (also on the shipping advisor)

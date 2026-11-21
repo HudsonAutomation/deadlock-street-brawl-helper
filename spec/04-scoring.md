@@ -183,7 +183,7 @@ Include a reason when the condition holds. Wording:
 
 ## One set on screen
 
-The live app advises the set that is on screen, not a plan across future choices. The joint picker below still runs so a set of three is ranked as a combination: add the three scores, add pairwise synergy between them divided by `max(1, count − 1)`, and subtract 1 for each repeated item. The combination with the highest total is the pick list. With one set of three cards, the card to take is the one with the highest score, unless a re-roll is called.
+The live app scores only the choice on screen. The other two choices of the round are treated as not yet seen, so choice 1 or 2 can be told to keep a weak set because a later choice might be worth the re-roll. Choice 3 has nothing after it, so its hold value is 0. The joint picker below still runs so a set of three is ranked as a combination: add the three scores, add pairwise synergy between them divided by `max(1, count − 1)`, and subtract 1 for each repeated item. The combination with the highest total is the pick list. With one set of three cards, the card to take is the one with the highest score, unless a re-roll is called.
 
 ## Re-roll
 

@@ -43,17 +43,17 @@ Until then, if the draft is up, draw the word `Reading` above the middle card's 
 
 ### Plates
 
-One plate above each card that is present or unknown. Contents: a tier letter, then `Score: <n>` to two decimals. Unknown cards use a grey `?` badge and a `?` label, no score.
+One plate above each card that is present or unknown. Contents: a grade letter, then `Score: <n>` to two decimals. The letter is the Street Brawl tier-list grade of that item against the other items of its own draft tier (S, A, B, or C), or `-` when the snapshot has no grade. It is not the shop tier 1 to 5. Unknown cards use a grey `?` badge and a `?` label, no score.
 
 - The card to take: plate filled teal, dark text, and a 3 px teal circle on the item icon.
 - Every other sure card: charcoal plate, 1 px grey border, grey badge and text, drawn at 0.6 opacity.
 - A black 35 percent veil covers each non-advised card's icon, under the plates. Hover still works on a veiled card.
 - A `?` card is grey and veiled when there is a best card or a re-roll. If there is no best card and no re-roll, nothing is veiled.
-- An enhanced card adds a cell at the right end of the plate: `Enhanced +n`, or `Enh +n` when the plates would touch. `n` is the enhanced bonus from [04-scoring.md](04-scoring.md), the score minus the same card not enhanced.
+- An enhanced card adds a cell at the right end of the plate: `Enhanced: (+1.23)` with the bonus to two decimals, or `Enh: (+1.23)` when any two plates would come within 2 px. The number is the enhanced bonus from [04-scoring.md](04-scoring.md), the score minus the same card not enhanced.
 
 ### Re-roll
 
-When a re-roll is called, no card is the best. All cards are grey and veiled. Draw a filled teal plate the size of a card plate, centred above the Use Re-Roll button, reading `RE-ROLL`, plus a 4 px teal outline on the button.
+When a re-roll is called, no card is the best. All cards are grey and veiled. Draw a filled teal plate the size of a card plate, centred above the Use Re-Roll button, reading `RE-ROLL`, plus a 4 px teal outline on the button. Also show a small panel, about 18 px type, toward the right edge and about 40 percent down: `Re-roll: <expected> vs <current>`, both to two decimals. The panel's letters are displayed in capitals.
 
 ### My Picks
 
@@ -63,7 +63,7 @@ Rings and tags from [06-my-picks.md](06-my-picks.md), drawn so they do not repla
 
 While a draft is showing, read the cursor every 50 ms and hit-test in the overlay. While only the lobby dot is showing and the game is in front, poll every 400 ms. Poll nothing otherwise.
 
-Hovering a plate shows a tip. Rows are the breakdown from [04-scoring.md](04-scoring.md). They sum to the score on the plate. The tip works on a veiled card.
+Hovering a plate shows a tip. The heading is the item name and its S/A/B/C grade. Rows are the breakdown from [04-scoring.md](04-scoring.md). They sum to the score on the plate. A last line is labelled `Score`. The tip works on a veiled card. If the item has no Street Brawl row, the only line is `No Street Brawl data` and the total is omitted.
 
 ### Notices
 
@@ -75,19 +75,21 @@ Hovering a plate shows a tip. Rows are the breakdown from [04-scoring.md](04-sco
 
 An HTML picture of the in-game upgrade panel, not a second copy of the game's art direction beyond the pills and the four columns. Same layout the editor uses. This round's pills highlighted, earlier rounds grey with a check, later rounds plain. Title `Round N: X points`. Evidence line as in [05-advisor-ui.md](05-advisor-ui.md). Fifteen seconds, then gone. A new draft removes it immediately.
 
-## Lobby dot
+## Lobby badge
 
-A dot at the top left, about 10 px at 1080p, 70 percent opaque.
+A charcoal badge at the top left, not a bare dot. At 1080p it is about 232 by 32 px, inset about 4 px from the left and 1 px from the top, fill about 88 percent opaque, with a thin teal border. It scales with the overlay height. Inside it: a 10 px status dot (about 90 percent opaque, 12 px margin), the app logo, the title `STREET BRAWL ADVISOR`, and a status line.
 
-| State | Colour | Hover |
-| --- | --- | --- |
-| Watching for a draft | Teal | `Brawl Helper: watching for draft. F8 = detect now` |
-| Capture on, reading | Amber | `Brawl Helper: reading draft. F8 = detect now` |
-| Capture failed | Grey | `Brawl Helper: capture failed. F8 = detect now` |
+| State | Dot colour | Badge line | Hover |
+| --- | --- | --- | --- |
+| Watching for a draft | Teal | `Watching for the draft, F8` | `Brawl Helper: watching for draft. F8 = detect now` |
+| Capture on, reading | Amber `#f0a830` | `Reading the draft, F8` | `Brawl Helper: reading draft. F8 = detect now` |
+| Capture failed | Grey | `Capture failed, F8` | `Brawl Helper: capture failed. F8 = detect now` |
 
-Show the dot when a game window is found, the player is not in a match, and Deadlock (or the dummy) is the foreground window. "In a match" starts at a draft or a round banner and ends after 10 minutes with no draft, or when the window is lost and found again (back in the lobby). Hide the dot during a match and whenever Deadlock is not in front. Test mode counts as in front.
+While reading, the amber dot grows a ring and fades it, redrawn about every 100 ms over about 1.2 s, so the player can see the app is working. The hover tip sits about 6 px under the badge and hides about 250 ms after the cursor leaves.
 
-The dot is drawn by the overlay from the shell's state. The control window does not set it.
+Show the badge when a game window is found, the player is not in a match, and Deadlock (or the dummy) is the foreground window. "In a match" starts at a draft or a round banner and ends after 10 minutes with no draft, or when the window is lost and found again (back in the lobby). Hide the badge during a match and whenever Deadlock is not in front. Test mode counts as in front.
+
+The badge is drawn by the overlay from the shell's state. The control window does not set it.
 
 ## Click-through
 

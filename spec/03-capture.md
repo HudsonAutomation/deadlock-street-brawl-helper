@@ -132,7 +132,9 @@ One hidden helper process does Windows OCR, one crop at a time. Crops sent back 
 - Down, or not on Windows: every read fails. Status line `Name reader not running`. Unread cards are grey `?`. The hero falls back to the window's selected hero. The re-roll caption may still use a glyph test for the digit 1, and nothing else.
 - Do not bundle a second OCR engine.
 
-The re-roll caption is prepared at 4 times scale. It is read before the set is accepted, and a later change needs two agreeing re-reads. The owned list is delivered with the accepted set and not again while that set stays up.
+The re-roll caption is prepared at 4 times scale. Only a lone 0 or 1 at the start of the text is believed. Anything else, and every read while the reader is down, uses the glyph: a tall thin mark (height at least 8 px and width/height at most 0.45) means 1, otherwise 0. A later change is taken only when two re-reads agree, at least 600 ms apart. The first set of a match does not wait for that caption: if a glyph is present, assume 1 re-roll remains, otherwise 0, and let a later agreed read correct it. The owned list is delivered with the accepted set and not again while that set stays up.
+
+One crop that gets no answer within 3 s fails. The helper has 15 s to start. The warm-up crop is about 160 by 48. Once capture is running, ask the window for about 15 frames a second while a draft is up, about 4 while idle, and about 8 when reads are slow.
 
 ## When a set is advised
 

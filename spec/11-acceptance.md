@@ -50,7 +50,7 @@ The two OBS recordings that the video-truth stretches were cut from are not in t
 
 Run these through the real find / capture / recognise / advise / draw path in test mode, not through a unit test that stubs the reader, except where Windows OCR is replaced by the recorded answers.
 
-**B1. choice1.** Given `public/demo/choice1.png` in the dummy, then within 2.5 s the overlay shows three plates, each with a tier letter and `Score: <n>`, exactly one teal plate and a 3 px teal circle, and the other plates charcoal. The item named on the teal plate is the highest score under the rules in [04-scoring.md](04-scoring.md) for the hero and the three names read. No plate sits on a card that was not offered.
+**B1. choice1.** Given `public/demo/choice1.png` in the dummy, then within 2.5 s the overlay shows three plates, each with an S/A/B/C grade letter (or `-`) and `Score: <n>`, exactly one teal plate and a 3 px teal circle, and the other plates charcoal. The letter is the tier-list grade, not the shop tier. The item named on the teal plate is the highest score under the rules in [04-scoring.md](04-scoring.md) for the hero and the three names read. No plate sits on a card that was not offered. The shipping control window does not list those three cards.
 
 **B2. choice2.** Same, for `choice2.png`.
 

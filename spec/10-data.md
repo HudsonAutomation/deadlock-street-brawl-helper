@@ -48,7 +48,7 @@ For each hero:
 
 - Match count.
 - Item rows: item id, wins, losses, matches. (Players, buy time, and sells may be stored. Scoring uses wins and matches.)
-- Pair rows, combination size 2: two item ids, wins, losses, matches. Pairs under 20 matches are ignored.
+- Pair rows, combination size 2: two item ids, wins, losses, matches. Keep the 600 most-played pairs. Pairs under 20 matches are ignored.
 - Versus each other hero: the same item rows filtered by enemy hero id. Rows under 50 matches are ignored.
 - Ability-order rows: the sequence of ability ids, wins, matches. Sequences under 100 matches do not decide a step.
 

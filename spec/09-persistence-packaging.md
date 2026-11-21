@@ -30,6 +30,8 @@ Prefix `brawl.` except the debug flag. Validate on read. A broken value falls ba
 | --- | --- | --- |
 | `brawl.heroId` | Number, the selected hero | 1 (Infernus) |
 | `brawl.tab` | `advisor`, `picks`, or `tiers` | `advisor` |
+| `brawl.round` | Last round selected in the debug controls, 1 to 5. Choice is not stored. | 1 |
+| `brawl.enemies` | Four hero ids. 0 means that slot is empty. | Four zeros |
 | `brawl.myPicks` | Enabled flag, fallback hero id, and per-hero edits | On, fallback hero 86, no edits |
 | `brawl.customOrders` | Map of hero id to 12 integers | Empty |
 | `brawl.firstRunDone` | The first-run panel was dismissed | Absent, so the panel shows |
