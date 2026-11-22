@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Deadlock</title>
+    <style>
+      html, body { margin: 0; background: #000; height: 100%; }
+      img { width: 100vw; height: 100vh; object-fit: fill; }
+    </style>
+  </head>
+  <body>
+    <img id="shot" alt="" />
+    <script>
+      const name = new URLSearchParams(location.search).get('name') || 'choice1'
+      document.getElementById('shot').src = 'demo/' + name + '.png'
+    </script>
+  </body>
+</html>

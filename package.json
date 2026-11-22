@@ -1,0 +1,63 @@
+{
+  "name": "deadlock-street-brawl-helper",
+  "productName": "Deadlock Street Brawl Helper",
+  "version": "1.0.0-rc.1",
+  "private": true,
+  "type": "module",
+  "description": "Street Brawl draft advisor for Deadlock. Screen reading only.",
+  "main": "dist/electron/main.js",
+  "author": "Deadlock Item Assist",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/stage-snapshot.mjs && vite build && vite build --config vite.preload.config.ts && vite build --config vite.electron.config.ts",
+    "build:final": "node scripts/stage-snapshot.mjs && vite build --mode final && vite build --config vite.preload.config.ts --mode final && vite build --config vite.electron.config.ts --mode final",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "test": "vitest run",
+    "brawl": "tsx src/cli/advise.ts",
+    "fetch-data": "python3 tools/fetch-snapshot.py",
+    "pack:win": "npm run build && electron-builder --win nsis portable --x64"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8",
+    "jsdom": "^26.1.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  },
+  "build": {
+    "appId": "com.deadlockstreetbrawl.helper",
+    "productName": "Deadlock Street Brawl Helper",
+    "directories": { "output": "release", "buildResources": "build" },
+    "files": ["dist/**/*", "package.json", "build/icon.png"],
+    "extraResources": [
+      { "from": "electron/ocr-helper.ps1", "to": "ocr-helper.ps1" },
+      { "from": "electron/find-window.ps1", "to": "find-window.ps1" }
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Deadlock-Item-Assist-Setup-${version}.exe"
+    },
+    "portable": {
+      "artifactName": "Deadlock-Item-Assist-${version}-portable.exe"
+    }
+  }
+}

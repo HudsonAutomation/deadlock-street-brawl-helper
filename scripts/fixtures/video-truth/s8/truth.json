@@ -1,0 +1,80 @@
+{
+ "video": [
+  2637.5,
+  2663
+ ],
+ "fps": 4,
+ "sets": [
+  {
+   "draft": "d024",
+   "round": 3,
+   "choice": 1,
+   "items": [
+    "Spirit Shredder",
+    "Spirit Sap",
+    "Melee Charge"
+   ],
+   "from": 2639.25,
+   "to": 2643,
+   "readable": [
+    2640.5,
+    2643
+   ],
+   "covered": [
+    2
+   ],
+   "appear": 2639.25
+  },
+  {
+   "draft": "d025",
+   "round": 3,
+   "choice": 2,
+   "items": [
+    "Heroic Aura",
+    "Spirit Resilience",
+    "Superior Duration"
+   ],
+   "from": 2644.25,
+   "to": 2650.5,
+   "readable": [
+    2645.5,
+    2649.75
+   ],
+   "appear": 2644.75
+  },
+  {
+   "draft": "d026",
+   "round": 3,
+   "choice": 3,
+   "items": [
+    "Colossus",
+    "Armor Piercer",
+    "Lightning Scroll"
+   ],
+   "from": 2652.5,
+   "to": 2657.5,
+   "readable": [
+    2653.75,
+    2656.75
+   ],
+   "appear": 2653
+  },
+  {
+   "draft": "d026",
+   "round": 3,
+   "choice": 3,
+   "items": [
+    "Spiritual Overflow",
+    "Witchmail",
+    "Crippling Headshot"
+   ],
+   "from": 2658.25,
+   "to": 2662.25,
+   "readable": [
+    2659.5,
+    2661.5
+   ],
+   "appear": 2658.75
+  }
+ ]
+}

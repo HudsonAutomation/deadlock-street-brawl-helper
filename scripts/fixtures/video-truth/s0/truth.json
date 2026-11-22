@@ -1,0 +1,60 @@
+{
+ "video": [
+  1,
+  15
+ ],
+ "fps": 4,
+ "sets": [
+  {
+   "draft": "d001",
+   "round": 3,
+   "choice": 2,
+   "items": [
+    "Mercurial Magnum",
+    "Toxic Bullets",
+    "Spirit Rend"
+   ],
+   "from": 2.75,
+   "to": 5.5,
+   "readable": [
+    4.5,
+    5
+   ],
+   "appear": 3.5
+  },
+  {
+   "draft": "d002",
+   "round": 3,
+   "choice": 3,
+   "items": [
+    "Lightning Scroll",
+    "Magic Carpet",
+    "Spellslinger"
+   ],
+   "from": 7,
+   "to": 9,
+   "readable": [
+    7.75,
+    8.5
+   ],
+   "appear": 7
+  },
+  {
+   "draft": "d002",
+   "round": 3,
+   "choice": 3,
+   "items": [
+    "Infuser",
+    "Cheat Death",
+    "Mystic Reverb"
+   ],
+   "from": 9.5,
+   "to": 14,
+   "readable": [
+    10.75,
+    13.25
+   ],
+   "appear": 10
+  }
+ ]
+}

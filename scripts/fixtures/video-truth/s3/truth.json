@@ -1,0 +1,77 @@
+{
+ "video": [
+  1143.5,
+  1164.5
+ ],
+ "fps": 4,
+ "sets": [
+  {
+   "draft": "d009",
+   "round": 1,
+   "choice": 1,
+   "items": [
+    "Extra Spirit",
+    "Mystic Burst",
+    "Mystic Regeneration"
+   ],
+   "from": 1145.25,
+   "to": 1148.5,
+   "readable": [
+    1146.5,
+    1148.25
+   ],
+   "appear": 1145.5
+  },
+  {
+   "draft": "d010",
+   "round": 1,
+   "choice": 2,
+   "items": [
+    "Arcane Surge",
+    "Slowing Bullets",
+    "Express Shot"
+   ],
+   "from": 1150,
+   "to": 1154.75,
+   "readable": [
+    1151.25,
+    1154
+   ],
+   "appear": 1150
+  },
+  {
+   "draft": "d010",
+   "round": 1,
+   "choice": 2,
+   "items": [
+    "Active Reload",
+    "Bullet Lifesteal",
+    "Decay"
+   ],
+   "from": 1155.75,
+   "to": 1158.5,
+   "readable": [
+    1157,
+    1157.75
+   ],
+   "appear": 1155.75
+  },
+  {
+   "draft": "d011",
+   "round": 1,
+   "choice": 3,
+   "items": [
+    "Spirit Snatch",
+    "Spirit Rend",
+    "Heroic Aura"
+   ],
+   "from": 1159.75,
+   "to": 1163.5,
+   "readable": [
+    1161,
+    1162.75
+   ],
+   "appear": 1159.75
+  }
+ ]
+}
